@@ -9,12 +9,13 @@ The init proc will run rcS, in which I place some simple commands, include:
 - exec neofetch to print some system information
 - change to bash by executing /bin/bash
 
+Due to neofetch is little slow, I change neofetch to pfetch.
 
 ### Usage:
 
 ```bash
 sudo ./mk-base-ubuntu.sh riscv64
-sudo ./mk-ubuntu-rootfs.sh riscv64
+./mk-ubuntu-rootfs.sh riscv64
 ```
 You can get the ubuntu-rootfs.ext4. It is a simple rootfs, mainly used for experiments.
 

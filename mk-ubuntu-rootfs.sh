@@ -51,6 +51,8 @@ echo -e "\033[47;36m Change root.....................\033[0m"
 sudo mount -o bind /dev $TARGET_ROOTFS_DIR/dev
 sudo cp rcS $TARGET_ROOTFS_DIR/etc/init.d/rcS
 sudo cp fstab $TARGET_ROOTFS_DIR/etc/fstab
+sudo cp inittab $TARGET_ROOTFS_DIR/etc/inittab
+sudo cp pfetch $TARGET_ROOTFS_DIR/bin/pfetch
 # sudo cp motd $TARGET_ROOTFS_DIR/etc/motd
 sudo cp busybox $TARGET_ROOTFS_DIR/bin/busybox
 
@@ -61,10 +63,13 @@ cat << EOF | sudo chroot $TARGET_ROOTFS_DIR /bin/bash
 mount -t proc proc /proc
 mount -t sysfs sys /sys
 
-apt-get -y update
-apt-get -f -y upgrade
+# apt-get -y update
+# apt-get -f -y upgrade
 
-apt-get install -fy neofetch vim iputils-ping
+# apt-get install -fy vim
+
+# change neofetch to pfetch
+chmod +x /bin/pfetch
 
 chmod +x /bin/busybox
 chmod +x /etc/init.d/rcS

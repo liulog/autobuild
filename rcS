@@ -3,15 +3,18 @@
 # mount /proc and /sys
 /bin/mount -a
 
-mkdir -p /dev
-/bin/mount -t devtmpfs devtmpfs /dev
+# mkdir -p /dev
+# /bin/mount -t devtmpfs devtmpfs /dev
 
 # print information
 echo "-------------------------------------------" > /dev/console
-echo "Starting neofetch...\n" > /dev/console 
-/usr/bin/neofetch > /dev/console 2>&1
+echo "Starting pfetch...\n" > /dev/console
+/bin/pfetch > /dev/console
 
-# change to bash
+# step in shell 
 echo "-------------------------------------------" > /dev/console
-echo "Starting bash..." > /dev/console
-/bin/bash
+echo "Starting bash...\n" > /dev/console
+
+echo "System time: $(date)" > /dev/console
+echo "Current user: $USER" > /dev/console
+echo "Current directory: $(pwd)\n" > /dev/console
