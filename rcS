@@ -1,0 +1,17 @@
+#! /bin/sh
+
+# mount /proc and /sys
+/bin/mount -a
+
+mkdir -p /dev
+/bin/mount -t devtmpfs devtmpfs /dev
+
+# print information
+echo "-------------------------------------------" > /dev/console
+echo "Starting neofetch...\n" > /dev/console 
+/usr/bin/neofetch > /dev/console 2>&1
+
+# change to bash
+echo "-------------------------------------------" > /dev/console
+echo "Starting bash..." > /dev/console
+/bin/bash
